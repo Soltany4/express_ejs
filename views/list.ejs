@@ -1,0 +1,57 @@
+        <table class="table table-bordered table-striped text-center mt-4">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Avatar</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Age</th>
+                <th scope="col">Date de naissance</th>
+                <th scope="col">Salaire</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <% employee.forEach(emp => {
+                    %> 
+                <th scope="row"><%=emp.id %></th>
+                <td><img src={<%=emp.imageUrl %>} /></td>
+                <td><%=emp.firstName %></td>
+                <td><%=emp.lastName %></td>
+                <td><%=emp.email %></td>
+                <td><%=emp.contactNumber %></td>
+                <td><%=emp.age %></td>
+                <td><%=emp.dob %></td>
+                <td><%=emp.salary %></td>
+                <td><%=emp.address %></td>
+                <td>
+                    
+                       <button class="btn btn-secondary" onclick={changeClassToVisble()}>Modifier</button>
+                    <a href="/employee/delete/<%= (emp.id) %>"  class="btn btn-danger">
+                        Supprimer
+                    </a>
+                </td>
+            </tr>
+           
+            <tr>
+                <form method="post" action="employee/edit/<%= emp.id %>">
+                <td><%= emp.id %></td>
+                <td><input type="text" name="imageUrl" class="form-control"/></td>
+                <td><input type="text" name="firstName" class="form-control"/></td>
+                <td><input type="text" name="lastName" class="form-control"/></td>
+                <td><input type="text" name="email" class="form-control"/></td>
+                <td><input type="text" name="contactNumber" class="form-control"/></td>
+                <td><input type="text" name="age" class="form-control"/></td>
+                <td><input type="text" name="dob" class="form-control"/></td>
+                <td><input type="text" name="salary" class="form-control"/></td>
+                <td><input type="text" name="address" class="form-control"/></td>
+                <td><button class="btn btn-success">Enregistrer</button></td>
+                </form>
+            </tr>
+            <%  }); %>
+            </tbody>
+        </table>
